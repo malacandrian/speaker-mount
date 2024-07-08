@@ -74,6 +74,12 @@ module Mount() {
 
             translate(v=[0,-9,10])
             cylinder(d=5,h=2);
+
+            translate(v=[10.5,-20.5,-7])
+            cube([10,30,12]);
+
+            translate(v=[-20.5,-20.5,-7])
+            cube([10,30,12]);
         }
 
         #Target();
