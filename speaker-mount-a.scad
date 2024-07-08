@@ -35,6 +35,22 @@ module Target() {
     Clamp();
 }
 
+module Post(h, d1, d2) {
+    r1 = d1/2;
+    r2 = d2/2;
+
+    diff = r1 - r2;
+    r3 = ((h^2) + (4 * (diff^2)))/(8 * diff);
+
+    rotate_extrude(angle=360)
+    difference() {
+        square(size=[r1, h], center=false);
+        translate(v=[r2 + r3, h/2])
+        circle(r = r3);
+    }
+    
+}
+
 module Mount() {
     color([0.25,0.75,0.25])
     difference() {
@@ -42,11 +58,19 @@ module Mount() {
             translate(v=[-10.5,-5.5,-7])
             cube([21,15,12]);
 
-            translate(v=[-4,-12.5,0])
-            cube([8,7,5]);
+            translate(v=[-10.5,-12.5,0])
+            difference(){
+                cube([21,7,5]);
+                translate(v=[0,0,-0.5])
+                cylinder(r=7,h=6);
+
+                translate(v=[21,0,-0.5])
+                cylinder(r=7,h=6);
+            }
+            
 
             translate(v=[0,-9,5])
-            cylinder(d=2,h=5);
+            Post(h=5, d1=5, d2=2);
 
             translate(v=[0,-9,10])
             cylinder(d=5,h=2);
