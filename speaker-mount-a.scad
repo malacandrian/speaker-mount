@@ -70,9 +70,9 @@ module Mount() {
             
 
             translate(v=[0,-9,5])
-            Post(h=5, d1=5, d2=2);
+            Post(h=3, d1=5, d2=2);
 
-            translate(v=[0,-9,10])
+            translate(v=[0,-9,8])
             cylinder(d=5,h=2);
 
             translate(v=[10.5,-20.5,-7])
